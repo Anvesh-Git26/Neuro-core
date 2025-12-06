@@ -3,3 +3,7 @@ transformers
 faiss-cpu
 sentence-transformers
 numpy
+langchain
+langchain-community
+langchain-core
+ctransformers
