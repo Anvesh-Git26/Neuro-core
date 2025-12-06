@@ -1,13 +1,20 @@
 import torch
 import os
+import sys
 from transformers import DistilBertForSequenceClassification, DistilBertTokenizer
+
+# FIX IMPORTS
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from knowledge_engine import KnowledgeEngine
 
 class MikoRobot:
-    def __init__(self, model_path="../miko_model"):
+    def __init__(self):
         self.device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
         
-        # Load Intent Classifier
+        # FIX PATH: Find the model relative to this script
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        model_path = os.path.join(base_dir, '..', 'miko_model')
+
         if os.path.exists(model_path):
             self.classifier = DistilBertForSequenceClassification.from_pretrained(model_path)
         else:
@@ -17,7 +24,6 @@ class MikoRobot:
         self.classifier.to(self.device)
         self.tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
         
-        # Load Knowledge Engine
         self.brain = KnowledgeEngine()
 
     def get_intent(self, text):
