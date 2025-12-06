@@ -38,4 +38,9 @@ It uses a **DistilBERT** classifier for intent detection and a **FAISS-based RAG
 * **Function:** Runs fully offline on the CPU to generate personalized bedtime stories based on the child's mood.
 * **Optimization:** Used 4-bit quantization to fit the LLM within 600MB RAM.
 
+### 🧠 Contextual Memory (NER)
+* **Engine:** spaCy (en_core_web_sm)
+* **Function:** Real-time Named Entity Recognition (NER) to extract user attributes (Names, Locations, Dates) from conversation logs.
+* **Data Structure:** specific entities are structured into JSON objects, simulating a NoSQL document store for long-term user personalization.
+
 
