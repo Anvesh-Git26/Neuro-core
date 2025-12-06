@@ -1,0 +1,14 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY src/ ./src/
+COPY data/ ./data/
+
+# Start by training the model (so it's ready inside the container)
+RUN python src/train_model.py
+
+CMD ["python", "src/main_robot.py"]
