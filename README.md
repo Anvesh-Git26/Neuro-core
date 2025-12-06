@@ -32,3 +32,10 @@ It uses a **DistilBERT** classifier for intent detection and a **FAISS-based RAG
     ```bash
     python main_robot.py
     ```
+## 🧠 Generative AI (Storytelling)
+* **Engine:** TinyLlama-1.1B (Quantized GGUF format).
+* **Framework:** LangChain (LCEL) + CTransformers.
+* **Function:** Runs fully offline on the CPU to generate personalized bedtime stories based on the child's mood.
+* **Optimization:** Used 4-bit quantization to fit the LLM within 600MB RAM.
+
+
